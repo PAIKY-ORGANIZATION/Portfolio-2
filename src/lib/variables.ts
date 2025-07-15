@@ -1,0 +1,1 @@
+export const mainPageLogsPath = './request-logs-GIT-IGNORE.txt'

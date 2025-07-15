@@ -10,8 +10,8 @@ services:
       #$ this is already getting picked when I run the npm script 
       # - config/local.env 
     command: sh -c "npm run build && npm run start"
-  redis: #$ only using this for rate limiting.
-    image: redis/redis-stack-server:latest
-    
-    ports:
-      - "63793:6379" #! Since there will be more apps with redis, I added a last digit that will increase based on the age of the app.
+  # redis: #$ only using this for rate limiting.
+  #   image: redis/redis-stack-server:latest
+
+  #   ports:
+  #     - "63793:6379" #! Since there will be more apps with redis, I added a last digit that will increase based on the age of the app.

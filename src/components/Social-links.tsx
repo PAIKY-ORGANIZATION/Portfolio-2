@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaEnvelope, FaYoutube  } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaYoutube  } from "react-icons/fa";
 import { MdContactPage } from "react-icons/md";
 
 

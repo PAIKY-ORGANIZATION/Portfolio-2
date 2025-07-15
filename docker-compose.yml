@@ -10,6 +10,8 @@ services:
       #$ this is already getting picked when I run the npm script 
       # - config/local.env 
     command: sh -c "npm run build && npm run start_docker"
+    depends_on:
+      - redis
   redis: #$ only using this for rate limiting.
     image: redis/redis-stack-server:latest
 

@@ -1,17 +1,21 @@
-import {createClient} from  'redis'
+import {createClient} from 'redis'
 
 
-export const redisClient =  createClient({
+export const redisClient = createClient({
     socket: {
-        host: process.env.REDIS_HOST,
-        port: Number(process.env.REDIS_PORT)
+        host: process.env.REDIS_HOST!,
+        port: Number(process.env.REDIS_PORT!),
     }
 })
 
-try{
-    redisClient.connect()
-}catch(e){
-    console.log('⚠️⚠️⚠️⚠️ Could not connect to redis:');
-    
-    console.log(e);	
+export const connectToRedis = async()=>{
+    if (redisClient.isOpen || redisClient.isReady) return; //! Need to check this because next-config loads multiple times
+    try{
+        await redisClient.connect()
+    }catch(e){
+        console.error(e);	
+        throw new Error('Could not connect to Redis')   
+    }
 }
+
+

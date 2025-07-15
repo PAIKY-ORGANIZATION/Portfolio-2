@@ -11,6 +11,7 @@ export default async function MainPage() {
 
 	await requestLog({filePath: 'request-logs-GIT-IGNORE.txt', logInfo: 'New visit to portfolio main page'}) //$ This depends on middleware for the IP address
 
+	
 	return (
 		<>
 			{/* //* Header has fixed position */}

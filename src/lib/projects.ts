@@ -10,7 +10,19 @@ type Project = {
 
 export const projects: Project[] = [
   {
-    name: 'Rate limiter middleware for ExpressJS (NPM PACKAGE)',
+    name: 'OTP code verification by Email or Text Messgae',
+    description: 'An app that sends one-time passwords via email (SMTP) or SMS using the Brevo API. Domain verification and SMTP settings are configured through AWS Route-53.',
+    tags: ['TypeScript', 'Brevo.com', 'AWS Route-53'],
+    img: '/assets/projects/otp.png',
+    urls: {
+      "Read Docs": '',
+      "Github": 'https://github.com/PAIKY-ORGANIZATION/projects-front-end/tree/master/src/actions/otp-app',
+      "Try Out": 'https://miguel-apps.click/otp-app/get-code'
+    },
+    live: true
+  },
+  {
+    name: 'Rate limiter middleware for ExpressJS (NPM Package)',
     description: 'Middleware for Express that limits requests per IP over a recent time window using Redis.',
     tags: ['Typescript', 'NPM', 'Redis', 'ExpressJS'],
     img: '/assets/projects/npm.png',
@@ -21,8 +33,8 @@ export const projects: Project[] = [
     }
   },
   {
-		name: 'JWT Authentication and Cookies',
-    description: 'A minimalistic app that uses JWT authentication and cookies to store user information and session.',
+    name: 'JWT Authentication and Cookies',
+    description: 'An app that uses JWT authentication and cookies to store user information and session.',
 		tags: ['Python', 'Flask', 'PostgreSQL'],
 		img: '/assets/projects/cookies-python.png',
     urls: {
@@ -82,7 +94,7 @@ export const projects: Project[] = [
   },
 	{
 		name: 'Redis cache for performance',
-    description: 'An app that uses JWT authentication and cookies to store user information.',
+    description: 'A caching layer powered by Redis to speed up repeated data requests and reduce server load.',
 		tags: ['Redis', 'NodeJS', 'Typescript'],
 		img: '/assets/projects/redis.png',
     urls: {
@@ -106,13 +118,13 @@ export const projects: Project[] = [
   },
   {
     name: 'Web Scraper for Ecommerce Website',
-    description: 'This is a web scraper that scrapes data from a website and uses an external AI to generate reports.',
+    description: 'This is a web scraper that scrapes data from a website and triggers an AI workflow to generate reports based on the scraped data.',
     tags: ['TypeScript', 'Playwright', 'PostgreSQL'],
     img: '/assets/projects/scraper.png',
     urls: {
       "Read Docs": '',
       "Github": 'https://github.com/dev-Miguel-Mendez/Comet-Scraper-Bot',
       "Youtube": 'https://www.youtube.com/watch?v=2Eqwh2XNKj0&t=456s',
-    }
+    },
   },
 ];

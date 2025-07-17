@@ -26,6 +26,10 @@ export default function AllProjects() {
     <section className="p-8 bg-gray-900 text-white">
       <div className="container mx-auto max-w-[1000px]">
         <h2 className="text-3xl font-bold mb-6 border-b-2 border-cyan-400 inline-block">Projects</h2>
+        <div className="mb-8 text-green-400">
+          <p className="text-center"> Want to hear more about any of these projects? </p> 
+          <p className="text-center">I'm happy to walk you through one personally. Just reach out :) </p>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {projects.map(proj => (
             <div key={proj.name} className="relative bg-gray-800 p-4 rounded">

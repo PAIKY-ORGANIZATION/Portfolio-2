@@ -10,18 +10,6 @@ type Project = {
 
 export const projects: Project[] = [
   {
-    name: 'Implementing Oauth v2 without external libraries and  beyond',
-    description: 'Oauth v2 without libraries + integration with Database, JWT tokens, and manual encryption of access tokens.',
-    tags: ['TypeScript', 'Playwright', 'PostgreSQL'],
-    img: '/assets/projects/oauth.png',
-    urls: {
-      "Youtube": 'https://www.youtube.com/watch?v=Qi02P98V8LE&t=929s',
-      "Read Docs": 'https://www.notion.so/Managing-Oauth-without-third-party-libraries-Github-and-Google-2333826aa7ed80b7a562e495ab6b82c3',
-      "Github": 'https://github.com/PAIKY-ORGANIZATION/Oauth--Github-and-Google-No-libraries',
-    },
-    live: true
-  },
-  {
     name: 'OTP code verification by Email or Text Messgae',
     description: 'An app that sends one-time passwords via email (SMTP) or SMS using the Brevo API. Domain verification and SMTP settings are configured through AWS Route-53.',
     tags: ['TypeScript', 'Brevo.com', 'AWS Route-53'],
@@ -30,6 +18,18 @@ export const projects: Project[] = [
       "Read Docs": '',
       "Github": 'https://github.com/PAIKY-ORGANIZATION/projects-front-end/tree/master/src/actions/otp-app',
       "Try Out": 'https://miguel-apps.click/otp-app/get-code'
+    },
+    live: true
+  },
+  {
+    name: 'Implementing Oauth v2 without external libraries and  beyond',
+    description: 'Oauth v2 without libraries + integration with Database, JWT tokens, and manual encryption of access tokens.',
+    tags: ['TypeScript', 'Playwright', 'PostgreSQL'],
+    img: '/assets/projects/oauth.png',
+    urls: {
+      "Youtube": 'https://www.youtube.com/watch?v=Qi02P98V8LE&t=929s',
+      "Read Docs": 'https://www.notion.so/Managing-Oauth-without-third-party-libraries-Github-and-Google-2333826aa7ed80b7a562e495ab6b82c3',
+      "Github": 'https://github.com/PAIKY-ORGANIZATION/Oauth--Github-and-Google-No-libraries',
     },
     live: true
   },

@@ -8,11 +8,12 @@ import {z, ZodError} from "zod"
 
 
 type Params = {
-    name: string | null,
-    email: string | null,
-    message: string | null
+    requesterName: string | null,
+    requesterEmailAddress: string | null,
+    requesterMessageBody: string | null
 }
 
+//prettier-ignore
 export const sendInterestEmail = async(params: Params)=>{
 
     //* I am sending both an email to myself notifying me that someone is interested and also an email to the person interested notifying them that I received their email.
@@ -21,17 +22,19 @@ export const sendInterestEmail = async(params: Params)=>{
         const isRateLimited = await runRateLimiterCheck()
 
         //* Check if the user is rate limited (only allow two emails per hour)
-        if(isRateLimited){
-            return {success: false, message: "You can only send 4 emails per hour."}
-        }
+        if(isRateLimited) return {success: false, message: "You can only send 4 emails per hour."}
 
-        const  result = _validateEmail(params) //*  Validate ALL email data
+        const  {requesterName, requesterEmailAddress, requesterMessageBody} = _zodValidateEmail(params) //*  Validate ALL email data
         
-        await _sendSelfEmail({name: result.name, email: result.email, message: result.message}) //* Send email to myself 
+        await _sendSelfEmail({ requesterName, requesterEmailAddress,  requesterMessageBody }) //* Send email to myself 
 
-        await _sendEmailToRequester(result.name, result.email) //* Send email to requester
+        await _sendEmailToRequester(requesterName, requesterEmailAddress) //* Send email to requester
         
-        await requestLog({filePath: mainPageLogsPath, action: 'Sent interest email'})
+        await requestLog({ //* Log the request
+            filePath: mainPageLogsPath, 
+            action: 'Sent interest email', 
+            additionalLogInfo: JSON.stringify({requesterName, requesterEmailAddress, requesterMessageBody})
+        }) 
 
 
         return {success: true, message: "Email sent successfully"}
@@ -50,30 +53,30 @@ export const sendInterestEmail = async(params: Params)=>{
 }
 
 
-const _validateEmail = ({name, email, message}: Params)=>{
+const _zodValidateEmail = ({requesterName, requesterEmailAddress, requesterMessageBody}: Params)=>{
     const emailSchema = z.object({
-        name: z.string().min(1).max(100),
-        email: z.string().email().min(1).max(100),
-        message: z.string().min(1).max(1000)
+        requesterName: z.string().min(1).max(100),
+        requesterEmailAddress: z.string().email().min(1).max(100),
+        requesterMessageBody: z.string().min(1).max(1000)
     })
     
-    return emailSchema.parse({name, email, message}) //$ ".parse" will throw an error if the data is invalid"
+    return emailSchema.parse({requesterName, requesterEmailAddress, requesterMessageBody}) //$ ".parse" will throw an error if the data is invalid"
 }
 
-const _sendSelfEmail = async ({name, email, message}: Params)=>{
+const _sendSelfEmail = async ({requesterName, requesterEmailAddress, requesterMessageBody}: Params)=>{
 
     const smtpEmail = new SendSmtpEmail()
     smtpEmail.sender = {email: 'miguel.mendez@miguel-mendez.click', name: 'Miguel'}
-    smtpEmail.subject = 'New message from: ' + email
+    smtpEmail.subject = 'New message from: ' + requesterEmailAddress
     smtpEmail.to =[{email: 'miguel.mendez@miguel-mendez.click', name: 'Miguel'}]
-    smtpEmail.textContent = 'Congrats! ✨ You have a new message from: '  + name + '\n with the following message: \n \n' + message
+    smtpEmail.textContent = 'Congrats! ✨ You have a new message from: '  + requesterName + '\n with the following message: \n \n' + requesterMessageBody
 
     const result = await brevoApiInstance.sendTransacEmail(smtpEmail)
 
     console.log({result});
 }
 
-
+        //% Name of  them, email address of them ⬇️
 const _sendEmailToRequester = async(name: string, email: string)=>{
     const smtpEmail = new SendSmtpEmail()
     smtpEmail.sender = {email: 'miguel.mendez@miguel-mendez.click', name: 'Miguel'}
@@ -84,6 +87,7 @@ const _sendEmailToRequester = async(name: string, email: string)=>{
 
     console.log({result});
 }
+
 
 //* Util functions:
 const _getContentForRequester = (name: string)=>{

@@ -1,7 +1,7 @@
 import { headers } from "next/headers"
 import { logRequest } from "req-logger-express"
 
-export const requestLog = async({filePath, action}: {filePath: string, action: string})=>{
+export const requestLog = async({filePath, action, additionalLogInfo}: {filePath: string, action: string, additionalLogInfo?: string})=>{
 
     //* If we are in development, avoid writing to the file system because it triggers a lot of hot reloads 
     if(process.env.NODE_ENV === 'production'){
@@ -13,6 +13,7 @@ export const requestLog = async({filePath, action}: {filePath: string, action: s
             ip,
             action: action,
             appName: 'Portfolio',
+            additionalLogInfo
             
         })
     }

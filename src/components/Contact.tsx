@@ -16,7 +16,7 @@ export default function Contact() {
 		const email = formData.get('email') as string | null
 		const message = formData.get('message') as string | null
 		
-		const result = await sendInterestEmail({name: name , email: email , message: message})
+		const result = await sendInterestEmail({requesterName: name , requesterEmailAddress: email , requesterMessageBody: message})
 
 		if(result.success){
 			toast.success(result.message)

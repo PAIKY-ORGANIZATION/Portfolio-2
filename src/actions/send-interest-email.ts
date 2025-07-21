@@ -1,7 +1,7 @@
 "use server"
 import { brevoApiInstance } from "@/lib/brevo-api-instance"
 import { mainPageLogsPath } from "@/lib/variables"
-import { requestLog } from "@/utils/log-request"
+import { logAction } from "@/utils/action-log"
 import { runRateLimiterCheck } from "@/utils/run-rate-limiter-check"
 import { SendSmtpEmail } from "@getbrevo/brevo"
 import {z, ZodError} from "zod"
@@ -18,7 +18,6 @@ export const sendInterestEmail = async(params: Params)=>{
 
     //* I am sending both an email to myself notifying me that someone is interested and also an email to the person interested notifying them that I received their email.
     try{
-        
         const isRateLimited = await runRateLimiterCheck()
 
         //* Check if the user is rate limited (only allow two emails per hour)
@@ -30,25 +29,22 @@ export const sendInterestEmail = async(params: Params)=>{
 
         await _sendEmailToRequester(requesterName, requesterEmailAddress) //* Send email to requester
         
-        await requestLog({ //* Log the request
+        await logAction({ //* Log the request
             filePath: mainPageLogsPath, 
             action: 'Sent interest email', 
             additionalLogInfo: JSON.stringify({requesterName, requesterEmailAddress, requesterMessageBody})
         }) 
 
-
         return {success: true, message: "Email sent successfully"}
-        
         
     }catch(e){
         if(e instanceof ZodError){
-            const errrorMessages = e.issues.map((issue)=> issue.message)
-            return {success: false, message: errrorMessages[0] as string}
+            const errorMessages = e.issues.map((issue)=> issue.message)
+            return {success: false, message: errorMessages[0] as string}
         }
         
         console.dir(e, {depth: 3});
         return {success: false, message: 'Something went wrong: ' + e }
-        
     }
 }
 
@@ -71,9 +67,8 @@ const _sendSelfEmail = async ({requesterName, requesterEmailAddress, requesterMe
     smtpEmail.to =[{email: 'miguel.mendez@miguel-mendez.click', name: 'Miguel'}]
     smtpEmail.textContent = 'Congrats! ✨ You have a new message from: '  + requesterName + '\n with the following message: \n \n' + requesterMessageBody
 
-    const result = await brevoApiInstance.sendTransacEmail(smtpEmail)
+    await brevoApiInstance.sendTransacEmail(smtpEmail)
 
-    console.log({result});
 }
 
         //% Name of  them, email address of them ⬇️
@@ -83,9 +78,8 @@ const _sendEmailToRequester = async(name: string, email: string)=>{
     smtpEmail.subject = "Thanks for reaching out – I'll be in touch shortly"    
     smtpEmail.to =[{email, name: 'Miguel'}]
     smtpEmail.textContent = smtpEmail.textContent = _getContentForRequester(name)
-    const result = await brevoApiInstance.sendTransacEmail(smtpEmail)
 
-    console.log({result});
+    await brevoApiInstance.sendTransacEmail(smtpEmail)
 }
 
 

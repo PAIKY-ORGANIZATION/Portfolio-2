@@ -5,12 +5,12 @@ import { Hero } from '@/components/Hero';
 import AllProjects from '@/components/Projects';
 import Skills from '@/components/Skills';
 import { mainPageLogsPath } from '@/lib/variables';
-import { requestLog } from '@/utils/log-request';
+import { logAction } from '@/utils/action-log';
 
 export default async function MainPage() {
 	
 
-	await requestLog({filePath: mainPageLogsPath, action: 'Visited  portfolio main page'}) //$ This depends on middleware for the IP address
+	await logAction({filePath: mainPageLogsPath, action: 'Visited  portfolio main page'}) //$ This depends on middleware for the IP address
 
 	
 	return (

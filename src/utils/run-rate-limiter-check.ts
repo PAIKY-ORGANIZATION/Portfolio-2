@@ -10,7 +10,7 @@ export const runRateLimiterCheck = async(): Promise<boolean>=> {
     const uniqueUserIdentifier = await _getOrSetUniqueUserIdentifier()
        
     return isRateLimited(redisClient as RedisClientType, {
-        requestLimit: 2,
+        requestLimit: 4,
         windowSizeSecs: 3600,
         uniqueUserIdentifier,
     })

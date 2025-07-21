@@ -1,5 +1,7 @@
 "use server"
 import { brevoApiInstance } from "@/lib/brevo-api-instance"
+import { mainPageLogsPath } from "@/lib/variables"
+import { requestLog } from "@/utils/log-request"
 import { runRateLimiterCheck } from "@/utils/run-rate-limiter-check"
 import { SendSmtpEmail } from "@getbrevo/brevo"
 import {z, ZodError} from "zod"
@@ -20,15 +22,18 @@ export const sendInterestEmail = async(params: Params)=>{
 
         //* Check if the user is rate limited (only allow two emails per hour)
         if(isRateLimited){
-            return {success: false, message: "You can only send two email per hour."}
+            return {success: false, message: "You can only send 4 emails per hour."}
         }
 
-        const  result = _validateEmail(params)
+        const  result = _validateEmail(params) //*  Validate ALL email data
         
-        await _sendSelfEmail({name: result.name, email: result.email, message: result.message})
+        await _sendSelfEmail({name: result.name, email: result.email, message: result.message}) //* Send email to myself 
 
-        await _sendEmailToRequester(result.name, result.email)
+        await _sendEmailToRequester(result.name, result.email) //* Send email to requester
         
+        await requestLog({filePath: mainPageLogsPath, action: 'Sent interest email'})
+
+
         return {success: true, message: "Email sent successfully"}
         
         

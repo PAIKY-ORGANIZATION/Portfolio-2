@@ -69,6 +69,19 @@ export const projects: Project[] = [
     },
   },
   {
+    name: 'Massive AWS RDS database with 7 Million records of accidents in the US',
+    tags: ['AWS', 'RDS','PostgreSQL', 'NodeJS'],
+    urls: {
+      "Github": 'https://github.com/PAIKY-ORGANIZATION/RDS_postgres_us_accidents_dataset',
+      "Read Docs": 'https://documenter.getpostman.com/view/40182356/2sB34oAcH4',
+      //¡ SOME HOW POINT TO KAGGLE
+
+    },
+    live: true,
+    description: 'An Express app using prisma ORM to connect to a PostgreSQL database hosted on AWS RDS. The database contains 3GB of data about US accidents.',
+    img: '/assets/projects/rds.png',
+  },
+  {
     name: 'SDK Library for a backend as service (Inspired on Firebase)',
     description: 'SDK (software development kit) library that can be use to interact with a backend through simple method calls.',
     tags: ['NPM', 'Typescript', "SDK"],
@@ -83,7 +96,7 @@ export const projects: Project[] = [
   },
   {
     name: 'Accepting ETH Payments and Subscriptions',
-    description: 'A lightweight app that allows users to subscribe to a service and pay for it using ETH.',
+    description: 'A demo app that allows users to subscribe to a service and pay for it using ETH.',
     tags: ['EthersJS', 'RainbowKit', 'React', 'Typescript'],
     img: '/assets/projects/metamask.GIIFF.gif',
     urls: {

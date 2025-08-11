@@ -17,7 +17,7 @@ export default async function MainPage() {
 		<>
 			{/* //* Header has fixed position */}
 			<Header />
-			<main className="pt-20">
+			<main className="pt-15 bg-[#141414]">
 				<Hero />
 				<Skills />
 				<AllProjects />

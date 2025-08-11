@@ -16,6 +16,7 @@ export default function AllProjects() {
     'Github': <FaGithub className="w-4 h-4 mt-[1px]" />,
     'Youtube': <FaYoutube className="w-4 h-4 mt-[1px]" />,
     'Read Docs': <IoIosPaper className="w-4 h-4 mt-[1px]" />,
+    'Readme': <IoIosPaper className="w-4 h-4 mt-[1px]" />,
     'Try Out': <BsGlobe2 className="w-4 h-4 mt-[1px]" />,
     'NPM package': <IoLogoNpm className="w-7 h-7 mt-[1px]" />
   };
@@ -23,16 +24,16 @@ export default function AllProjects() {
 
 	//prettier-ignore
 	return (
-    <section className="p-8 bg-gray-900 text-white">
+    <section className="p-8 bg-[#141414] text-white">
       <div className="container mx-auto max-w-[1000px]">
         <h2 className="text-3xl font-bold mb-6 border-b-2 border-cyan-400 inline-block">Projects</h2>
-        <div className="mb-8 text-green-400">
+        <div className="mb-8 text-[#1ACCE4] font-bold">
           <p className="text-center"> Want to hear more about any of these projects? </p> 
           <p className="text-center">I'm happy to walk you through one personally. Just reach out :) </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {projects.map(proj => (
-            <div key={proj.name} className="relative bg-gray-800 p-4 rounded">
+            <div key={proj.name} className="relative bg-[#1f1f1f] p-4 rounded">
                 {proj.live && (
                   <div className="absolute top-2 left-2 text-white text-xs font-semibold px-3 py-1 rounded animate-pulse bg-red-600">
                     Live API

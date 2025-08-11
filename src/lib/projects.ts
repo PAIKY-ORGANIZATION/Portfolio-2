@@ -10,16 +10,26 @@ type Project = {
 
 export const projects: Project[] = [
   {
+    name: 'Video store integrating Stripe for payments',
+    description: 'Stripe is a payment processor with a great API and  extensive resources for developers. In this application demo videos are sold, you can purchase them with test credit/debit cards, test fail payments, make refunds and disputes.',
+    tags: ['TypeScript', 'Brevo.com', 'AWS Route-53'],
+    img: '/assets/projects/stripe.png',
+    urls: {
+      "Github": 'https://github.com/PAIKY-ORGANIZATION/Stripe-Video-Store-S3',
+      "Try Out": 'http://thecometdiary.click:4009/',
+      "Readme": 'https://github.com/PAIKY-ORGANIZATION/Stripe-Video-Store-S3/blob/master/readme.md'
+      
+    },
+  },
+  {
     name: 'OTP code verification by Email or Text Messgae',
     description: 'An app that sends one-time passwords via email (SMTP) or SMS using the Brevo API. Domain verification and SMTP settings are configured through AWS Route-53.',
     tags: ['TypeScript', 'Brevo.com', 'AWS Route-53'],
     img: '/assets/projects/otp.png',
     urls: {
-      "Read Docs": '',
       "Github": 'https://github.com/PAIKY-ORGANIZATION/projects-front-end/tree/master/src/actions/otp-app',
       "Try Out": 'https://miguel-apps.click/otp-app/get-code'
     },
-    live: true
   },
   {
     name: 'Implementing Oauth v2 without external libraries and  beyond',
@@ -87,10 +97,10 @@ export const projects: Project[] = [
     tags: ['NPM', 'Typescript', "SDK"],
     img: '/assets/projects/sdk.png',
     urls: {
+      "Youtube": 'https://www.youtube.com/watch?v=PUpnQ1NVllA&t=470s',
       "Read Docs": 'https://crocus-ceres-509.notion.site/SDK-library-NPM-for-Backend-As-Service-BAAS-Documentation-2243826aa7ed80228d4dc093efd0cefd',
       "Github": 'https://github.com/dev-Miguel-Mendez/User-Manager-SDK',
-      "NPM package": 'https://www.npmjs.com/package/user-manager-sdk',
-      "Youtube": 'https://www.youtube.com/watch?v=PUpnQ1NVllA&t=470s'
+      "NPM package": 'https://www.npmjs.com/package/user-manager-sdk'
     },
     live: true
   },

@@ -2,7 +2,7 @@ import { socialLinks } from "./Social-links";
 
 export function Footer() {
   return (
-    <footer className="bg-gray-800 text-white p-4">
+    <footer className="bg-[#141414] text-white p-4">
       <div className="container mx-auto flex justify-between items-center">
         <a href="/" className="text-lg font-bold">Miguel Mendez</a>
         <nav className="flex space-x-4">

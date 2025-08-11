@@ -12,7 +12,7 @@ export const projects: Project[] = [
   {
     name: 'Video store integrating Stripe for payments',
     description: 'Stripe is a payment processor with a great API and  extensive resources for developers. In this application demo videos are sold, you can purchase them with test credit/debit cards, test fail payments, make refunds and disputes.',
-    tags: ['TypeScript', 'Brevo.com', 'AWS Route-53'],
+    tags: ['TypeScript', 'Brevo.com', 'AWS-S3'],
     img: '/assets/projects/stripe.png',
     urls: {
       "Github": 'https://github.com/PAIKY-ORGANIZATION/Stripe-Video-Store-S3',

@@ -9,7 +9,7 @@ export  function  Hero() {
         <a href="#contact" className="underline text-blue-400">Contact me</a>
       </div>
       <div>
-        <img src="/assets/images/my_profile_pic.png" alt="picture of Adam Keyes" className="mx-auto mb-4 w-80 rounded-full" />
+        <img src="/assets/images/my_self_1.png" alt="" className="mx-auto mb-4 w-80 rounded-full" />
       </div>
     </div>
   );

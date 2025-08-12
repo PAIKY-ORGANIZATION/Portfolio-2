@@ -1,7 +1,15 @@
 import { headers } from "next/headers"
 import { logRequest } from "req-logger-express"
 
-export const logAction = async({filePath, action, additionalLogInfo}: {filePath: string, action: string, additionalLogInfo?: string})=>{
+
+
+type Params = {
+    filePath: string,
+    action: string,
+    additionalLogInfo?: string
+}
+
+export const logAction = async({filePath, action, additionalLogInfo}: Params)=>{
 
     //* If we are in development, avoid writing to the file system because it triggers a lot of hot reloads 
     if(process.env.NODE_ENV === 'production'){

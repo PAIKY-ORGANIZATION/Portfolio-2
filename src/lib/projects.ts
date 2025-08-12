@@ -16,7 +16,7 @@ export const projects: Project[] = [
     img: '/assets/projects/stripe.png',
     urls: {
       "Github": 'https://github.com/PAIKY-ORGANIZATION/Stripe-Video-Store-S3',
-      "Try Out": 'http://thecometdiary.click:4009/',
+      "Try Out": 'https://omegalol.click',
       "Readme": 'https://github.com/PAIKY-ORGANIZATION/Stripe-Video-Store-S3/blob/master/readme.md'
       
     },

@@ -16,11 +16,11 @@ export default function Skills() {
               <img src={skill.icon} alt={skill.name} className="w-10 h-10 "/>
               <div>
                 <div className="font-semibold text-white">{skill.name}</div>
-                {skill.years && <div className="text-gray-400 text-sm">{skill.years} Year{skill.years > 1 ? "s" : ""} of Experience</div>}
               </div>
             </div>
           ))}
         </div>
+        <p className="mt-6 font-bold text-end mr-60 text-xl"> The rest of my skills are listed on <a href="https://drive.google.com/file/d/1Ql215eSbrvTVrgTBSX180RTRC1Q-i9-I/view?usp=sharing" className="underline text-blue-400">My resume</a>!</p>
       </div>
     </section>
   );

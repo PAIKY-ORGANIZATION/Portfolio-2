@@ -8,7 +8,7 @@ export default function Skills() {
   return (
     <section className="p-8 bg-[#141414] text-white">
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold mb-6 border-b-2 border-cyan-400 inline-block">Technical Skills</h2>
+        <h2 className="text-3xl font-bold mb-6 border-b-2 border-cyan-400 inline-block">Most relevant technical Skills</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-6">
           {skills.map(skill => (
             <div key={skill.name} className="flex items-center space-x-4">
